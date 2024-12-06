@@ -3,7 +3,8 @@
 ## Challenge Nuit de l'Info 2024
 
 Ce projet a été développé dans le cadre de la **Nuit de l'Info 2024**, un hackathon international se déroulant pendant toute une nuit. Le défi consistait à créer un code mettant en évidence les mauvaises pratiques de programmation pour sensibiliser les développeurs à l'importance des bonnes pratiques et de l'éthique dans le développement logiciel.
-⚠️le fichier du défi est worst_code_ever.c ⚠️l'autre fichier c pour voir une partie des jeux dans le sfe mode 
+
+## ⚠️le fichier du défi est worst_code_ever.c ⚠️l'autre fichier c pour voir une partie des jeux dans le sfe mode 
 
 ### Description : 
 Le défi: WORST CODE EVER
