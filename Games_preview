@@ -1,0 +1,202 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+
+int lives = 6; // The player starts with 3 lives
+
+// Existing game prototypes
+void playInteractiveMinesweeper();
+void playColorfulGame();
+void playAbsurdNumberGuessingGame();
+void loseLife(const char *reason);
+
+// New game prototypes
+void playMiniBlackjack();
+void playPokerGame();
+
+int main() {
+    srand(time(NULL)); // Seed the random number generator
+
+    printf("Welcome to the integrated games version!\n");
+    printf("You have %d lives. Good luck keeping them!\n", lives);
+
+    // Play Interactive Minesweeper
+    playInteractiveMinesweeper();
+    if (lives <= 0) {
+        printf("You lost all your lives in Minesweeper! Game over.\n");
+        return 0;
+    }
+
+    // Flush input after Minesweeper (which used scanf)
+    int ch;
+    while ((ch = getchar()) != '\n' && ch != EOF);
+
+    // Play Colorful Game
+    playColorfulGame();
+    if (lives <= 0) {
+        printf("You lost all your lives in the Colorful Game! Game over.\n");
+        return 0;
+    }
+
+    // Flush input after Colorful Game
+    while ((ch = getchar()) != '\n' && ch != EOF);
+
+    // Play Absurd Number Guessing Game
+    playAbsurdNumberGuessingGame();
+    if (lives <= 0) {
+        printf("You lost all your lives after the Absurd Number Guessing Game! Game over.\n");
+        return 0;
+    }
+
+    printf("Congratulations! You survived all the initial games with %d lives remaining.\n", lives);
+
+    // Flush input after Number Guessing Game
+    while ((ch = getchar()) != '\n' && ch != EOF);
+
+    // Now play Mini Blackjack
+    playMiniBlackjack();
+    // No life lost here, just absurdity.
+
+    // Flush input after Blackjack
+    while ((ch = getchar()) != '\n' && ch != EOF);
+
+    // Now play Poker
+    playPokerGame(); 
+    // After poker, the police raid, and the player ends up in jail.
+    // The script ends here.
+
+    return 0;
+}
+
+void playInteractiveMinesweeper() {
+    printf("\n=== Game 1: Interactive Minesweeper ===\n");
+    char grid[5][5];
+    int row, col;
+
+    // Initialize the grid with all mines ('M')
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            grid[i][j] = 'M';
+        }
+    }
+
+    printf("Here's the grid (hidden):\n");
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            printf(". "); // Display all cells as unrevealed
+        }
+        printf("\n");
+    }
+
+    printf("Enter your first guess (row and column, 0-4): ");
+    if (scanf("%d %d", &row, &col) != 2) {
+        printf("Invalid input! You lose a life.\n");
+        loseLife("Invalid Minesweeper input (not even two numbers)");
+        return;
+    }
+
+    // Validate input
+    if (row < 0 || row >= 5 || col < 0 || col >= 5) {
+        printf("Invalid coordinates! You lose a life.\n");
+        loseLife("Minesweeper: Out of bounds guess");
+        return;
+    }
+
+    printf("You selected (%d, %d)... BOOM! It's a mine.\n", row, col);
+    loseLife("Hit a mine in Minesweeper");
+
+    printf("Here's the full initial grid (M stands for mine):\n");
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            printf("%c ", grid[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+void playColorfulGame() {
+    printf("\n=== Game 2: The Colorful Output Game ===\n");
+    printf("Choose a color (r=red, g=green, b=blue): ");
+    int c = getchar();
+    while (c == '\n') { // Skip any leftover newlines
+        c = getchar();
+    }
+
+    // Respond based on the input, but always arbitrary and absurd
+    switch (c) {
+        case 'r':
+        case 'R':
+            printf("\033[1;31mYou chose red! How bold.\033[0m\n");
+            break;
+        case 'g':
+        case 'G':
+            printf("\033[1;32mYou chose green! Refreshing.\033[0m\n");
+            break;
+        case 'b':
+        case 'B':
+            printf("\033[1;34mYou chose blue! Calm and serene.\033[0m\n");
+            break;
+        default:
+            printf("\033[1;33mYou chose... something else! Daring!\033[0m\n");
+    }
+
+    // Display all colors regardless
+    printf("\033[1;31mThis is red text!\033[0m\n");
+    printf("\033[1;32mThis is green text!\033[0m\n");
+    printf("\033[1;34mThis is blue text!\033[0m\n");
+
+    // Arbitrarily penalize the player
+    printf("Wow, that was exciting, wasn't it? You lose a life anyway!\n");
+    loseLife("Colorful Game: Arbitrary penalty.");
+}
+
+void playAbsurdNumberGuessingGame() {
+    printf("\n=== Game 3: Absurd Number Guessing Game ===\n");
+    printf("Guess a number between 1 and 100: ");
+    int guess;
+    if (scanf("%d", &guess) != 1) {
+        printf("You didn't enter a valid number! Still lose a life.\n");
+        loseLife("Absurd Game: Invalid input");
+        return;
+    }
+
+    // Claim it's wrong, but reveal the "correct" number was actually what they guessed
+    printf("Wrong! The correct number was... %d.\n", guess);
+    printf("Wait, isn't that what you guessed?\n");
+    printf("Doesn't matter. You lose a life anyway!\n");
+    loseLife("Absurd Number Guessing Game: Lose no matter what.");
+}
+
+void playMiniBlackjack() {
+    printf("\n=== Bonus Game: Mini Blackjack ===\n");
+    printf("In this bizarre version of Blackjack, you draw a card and it's... 23!\n");
+    printf("23 is impossible in normal Blackjack, so you bust immediately.\n");
+    printf("The dealer laughs at you. No life lost here, just your dignity.\n");
+    // No life deduction, just absurdity
+}
+
+void playPokerGame() {
+    printf("\n=== Bonus Game: Poker ===\n");
+    printf("You have a god hand and are in for $1,000,000!\n");
+    printf("Options:\n");
+    printf("1) All in\n");
+    printf("2) Pass\n");
+    printf("Make your choice: ");
+    int choice;
+    if (scanf("%d", &choice) != 1) {
+        printf("You didn't choose a valid option. But let's say you still tried.\n");
+    }
+
+    // Regardless of the choice, police raid the illegal poker ring.
+    printf("Police raid the illegal poker game!\n");
+    printf("You are arrested and go to jail. Game over.\n");
+    printf("Since you're in jail, you won't need this PC anymore. Execution ends here.\n");
+    exit(0); // End the program abruptly as scenario demands.
+}
+
+void loseLife(const char *reason) {
+    lives--;
+    printf("You lost a life. Reason: %s\n", reason);
+    printf("Lives remaining: %d\n", lives);
+}
