@@ -3,6 +3,15 @@
 ## Challenge Nuit de l'Info 2024
 
 Ce projet a été développé dans le cadre de la **Nuit de l'Info 2024**, un hackathon international se déroulant pendant toute une nuit. Le défi consistait à créer un code mettant en évidence les mauvaises pratiques de programmation pour sensibiliser les développeurs à l'importance des bonnes pratiques et de l'éthique dans le développement logiciel.
+⚠️le fichier du défi est worst_code_ever.c ⚠️l'autre fichier c pour voir une partie des jeux dans le sfe mode 
+
+### Description : 
+Le défi: WORST CODE EVER
+Il est important de mettre de la qualité et du coeur dans les développements. Les tendances de TDD, DDD, Craftman ship sont en vogue et la beauté du code est à son paroxysme. Mais ne faut-il pas avoir touché le fond pour mieux remonter ? Cette année CAPCOD vous propose non pas de simplement produire un code de qualité médiocre, mais que celui-ci soit un exemple, une muse, pour le PDD (Pain Driven Développement INSERER JEU DE MOT RIGOLO). Le rendu se fera sous la forme du repo git de votre choix dans votre langage préféré et vous motiverez vos anti-choix de qualité par une petite note accompagnante.
+
+ 
+
+PS : nous aimons l’humour.
 
 ### Équipe : EPI Fraternité Sans Bannières
 
